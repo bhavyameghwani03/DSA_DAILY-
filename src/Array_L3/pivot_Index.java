@@ -2,25 +2,30 @@ package Array_L3;
 
 public class pivot_Index {
     public  static int pivotIndex(int[] nums) {
+        int n = nums.length;
+        int[] arr = new int[n];
+        int sum=0;
+        for(int i=0;i<n;i++){
+            arr[i]=sum;
+            sum=sum+nums[i];
 
-        for(int i=0;i<nums.length;i++){
+        }
+        int sum1=0;
+        for(int j=0;j<n;j++){
 
-            if(sum(nums,0,i-1)==sum(nums,i+1,nums.length-1)){
-                return i;
+            if (sum1  == sum-arr[j] - nums[j]) {
+                return j;
+
             }
+            sum1=sum1+nums[j];
         }
-        return -1 ;
-    }
-    public  static int sum(int[]arr,int a, int b){
-        int sums=0;
-        for(int i =a;i<=b;i++){
-            sums=sums+arr[i];
-        }
-        return sums;
+
+        return-1;
     }
 
     static void main() {
-     int  [] nums ={1,7,3,6,5,6};
+        int[]nums = {1,7,3,6,5,6};
         System.out.println(pivotIndex(nums));
     }
 }
+
